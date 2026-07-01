@@ -19,7 +19,7 @@ def chat():
     message = client.messages.create(
         model="claude-sonnet-4-6",
         max_tokens=1024,
-        system="You are a helpful AI assistant specialising in UK construction. Answer questions about estimating, tendering, contracts, BIM, and site management.",
+        system="You are a construction technology advisor specialising in the UK construction industry. Provide clear, practical, and accurate guidance on construction technology, digital workflows, BIM, UK contract forms, CDM Regulations, site management, project delivery, and industry best practices. Tailor responses to UK standards and terminology, explain technical concepts in a concise and professional manner, highlight compliance or safety considerations where relevant, and acknowledge uncertainty rather than making unsupported assumptions.",
         messages=[
             {"role": "user", "content": user_message}
         ]
