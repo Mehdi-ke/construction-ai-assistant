@@ -32,6 +32,8 @@
     .input-area textarea::placeholder { color: #484f58; }
     .input-area button { background: #238636; border: none; border-radius: 8px; padding: 10px 20px; color: #fff; font-size: 14px; font-family: 'Inter', sans-serif; font-weight: 500; cursor: pointer; white-space: nowrap; }
     .input-area button:hover { background: #2ea043; }
+    .new-chat { background: none; border: 1px solid #30363d; border-radius: 6px; padding: 4px 10px; color: #8b949e; font-size: 12px; font-family: 'JetBrains Mono', monospace; cursor: pointer; margin-left: auto; }
+    .new-chat:hover { border-color: #58a6ff; color: #58a6ff; }
   </style>
 </head>
 <body>
@@ -39,10 +41,10 @@
   <nav>
     <div class="nav-dot"></div>
     <span class="nav-title">Construction AI Assistant</span>
-    <span class="nav-sub">Powered by Claude</span>
+    <a href="/" class="new-chat">+ new chat</a>
   </nav>
 
-  <div class="chat-area">
+  <div class="chat-area" id="chatArea">
 
     <div class="msg assistant">
       <span class="msg-label">// assistant</span>
@@ -51,19 +53,19 @@
       </div>
     </div>
 
-    {% if user_message %}
-    <div class="msg user">
-      <span class="msg-label">you //</span>
-      <div class="msg-bubble">{{ user_message }}</div>
-    </div>
-    {% endif %}
-
-    {% if response %}
-    <div class="msg assistant">
-      <span class="msg-label">// assistant</span>
-      <div class="msg-bubble">{{ response | safe }}</div>
-    </div>
-    {% endif %}
+    {% for msg in history %}
+      {% if msg.role == "user" %}
+      <div class="msg user">
+        <span class="msg-label">you //</span>
+        <div class="msg-bubble">{{ msg.content }}</div>
+      </div>
+      {% else %}
+      <div class="msg assistant">
+        <span class="msg-label">// assistant</span>
+        <div class="msg-bubble">{{ msg.content | safe }}</div>
+      </div>
+      {% endif %}
+    {% endfor %}
 
   </div>
 
@@ -73,6 +75,11 @@
       <button type="submit">Ask</button>
     </div>
   </form>
+
+  <script>
+    const chatArea = document.getElementById('chatArea');
+    chatArea.scrollTop = chatArea.scrollHeight;
+  </script>
 
 </body>
 </html>
