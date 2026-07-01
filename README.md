@@ -33,7 +33,9 @@ A Flask web app that lets you chat with an AI assistant specialising in UK const
 
 4. Create a `.env` file with your Anthropic API key:
 
-5. Run the app:
+   ANTHROPIC_API_KEY=your-key-here
+
+6. Run the app:
 ```bash
    python app.py
 ```
