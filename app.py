@@ -60,4 +60,4 @@ def chat():
     return render_template("index.html", history=history_rendered)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=False)
