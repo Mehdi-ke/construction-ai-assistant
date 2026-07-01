@@ -2,6 +2,9 @@
 
 A Flask web app that lets you chat with an AI assistant specialising in UK construction. Ask questions about estimating, tendering, contracts, BIM, and site management — and get instant professional responses.
 
+## Live Demo
+[construction-ai-assistant-production.up.railway.app](https://construction-ai-assistant-production.up.railway.app)
+
 ## What It Does
 
 - Chat interface built with Flask and Jinja2 templates
